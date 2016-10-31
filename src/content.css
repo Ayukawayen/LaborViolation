@@ -2,7 +2,8 @@
 , .netAyukawayenLabor_icon, .netAyukawayenLabor_icon * {
 	float:none !important;
 	
-	text-indent: initial !important;
+	line-height:initial !important;
+	text-indent:initial !important;
 }
 
 

@@ -1,0 +1,39 @@
+{
+	"applications": {
+		"gecko": {
+			"id": "labor@Ayukawayen.net",
+			"strict_min_version": "45.0"
+		}
+	},
+	"name": "勞檢查詢",
+	"description": "違反勞動法令事業單位查詢",
+	"version": "0.9",
+	"permissions": [
+		"https://sheets.googleapis.com/"
+	],
+	"icons": {
+		"16":  "image/icon16.png",
+		"32":  "image/icon32.png",
+		"48":  "image/icon48.png",
+		"96":  "image/icon96.png",
+		"128": "image/icon128.png"
+	},
+	"background": {
+		"scripts": ["background.js"]
+	},
+	"content_scripts": [{
+		"matches": [
+			"*://*.yes123.com.tw/*",
+			"*://yes123.com.tw/*",
+			"*://*.518.com.tw/*",
+			"*://518.com.tw/*",
+			"*://*.1111.com.tw/*",
+			"*://1111.com.tw/*",
+			"*://*.104.com.tw/*",
+			"*://104.com.tw/*"
+		],
+		"css": ["content.css"],
+		"js": [ "lib/dom.js", "siteWarpper.js", "content.js" ]
+	}],
+	"manifest_version": 2
+}

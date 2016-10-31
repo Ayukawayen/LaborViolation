@@ -1,0 +1,100 @@
+#netAyukawayenLabor, #netAyukawayenLabor *
+, .netAyukawayenLabor_icon, .netAyukawayenLabor_icon * {
+	float:none !important;
+	
+	text-indent: initial !important;
+}
+
+
+#netAyukawayenLabor {
+	display:none !important;
+	
+	position:fixed !important;
+	bottom:0em !important;
+	left:0em !important;
+	right:0em !important;
+	
+	box-sizing:border-box !important;
+	font-size:1rem !important;
+	min-height:3em !important;
+	max-height:35% !important;
+	padding:0.25em !important;
+	text-align:left !important;
+	overflow-y:auto !important;
+	
+	box-shadow:0 0 0.5em 0 #000 !important;
+	background:rgba(255,255,0,1) !important;
+	color:#000 !important;
+}
+
+#netAyukawayenLabor.opened {
+	display:block !important;
+}
+
+#netAyukawayenLabor .netAyukawayenLabor_close {
+	float:right !important;
+	display:inline-block !important;
+	
+	font-size:20px !important;
+	width:1.5em !important;
+	height:1.5em !important;
+	text-align:center !important;
+	
+	cursor:pointer !important;
+}
+
+#netAyukawayenLabor dl {
+	margin:0 !important;
+	padding:0 !important;
+}
+#netAyukawayenLabor dl dt {
+	font-weight:bold !important;
+	font-size:1.25em !important;
+	margin:0 !important;
+	padding:0 0 0.25em 0 !important;
+}
+#netAyukawayenLabor dl dd {
+	margin:0 0 0.5em 1em !important;
+	padding:0 !important;
+	line-height:1.25 !important;
+}
+#netAyukawayenLabor dl dd span {
+	margin:0 0.25em 0 0 !important;
+}
+#netAyukawayenLabor dl dd .條款:after {
+	content:"：" !important;
+}
+#netAyukawayenLabor dl dd .資料集:before {
+	content:"(" !important;
+}
+#netAyukawayenLabor dl dd .日期:after {
+	content:")" !important;
+}
+
+.netAyukawayenLabor_icon {
+	display:inline-block !important;
+	float:none !important;
+	box-sizing:border-box !important;
+	font-size:10px !important;
+	font-weight:bold !important;
+	font-style:normal !important;
+	font-family:initial !important;
+	padding:0.25em 0.25em !important;
+	margin:0 0.5em !important;
+	min-width:1.5em !important;
+	height:1.5em !important;
+	line-height:1 !important;
+	border-radius:0.75em !important;
+	
+	text-align:center !important;
+	cursor:pointer !important;
+	
+	background:#c00 !important;
+	color:#fff !important;
+}
+
+.netAyukawayenLabor_icon.v_0{
+	cursor:default !important;
+	
+	background:#0c0 !important;
+}

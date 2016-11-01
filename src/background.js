@@ -1,12 +1,12 @@
 'use strict';
 
-const apiKey = 'AIzaSyBWqRdg-282o5dypBBI0qqz8I1MOT5HiZg';
+const apiKey = 'YOUR_API_KEY';
 
 const apiUri = 'https://sheets.googleapis.com/v4/spreadsheets';
 const ssId = '1uLR9eFePzLzlnkO1k1yh2-2_TJCOYGGEatGCQOgpz9M';
 
 var isRefreshed = false;
-var sheetInfos = [];
+var sheetInfos = {};
 var cpRecords = {};
 
 refreshSheetInfos(refreshRecords);
@@ -18,7 +18,7 @@ setInterval(()=>{
 function refreshSheetInfos(callback) {
 	callback = callback||(()=>{});
 	
-	let range = "'索引'!A2:C";
+	let range = "'索引'!A2:E";
 	
 	let uri = `${apiUri}/${ssId}/values/${range}?key=${apiKey}`;
 	
@@ -32,11 +32,13 @@ function refreshSheetInfos(callback) {
 		}
 		
 		let result = JSON.parse(this.responseText);
-		sheetInfos = result.values.map((item) => {
-			return {
-				name:item[0],
-				lastModified:new Date(item[1]||0),
-				lastCheck:new Date(item[2]||0),
+		sheetInfos = {};
+		result.values.forEach((item) => {
+			sheetInfos[item[0]] = {
+				desc:item[1]||'',
+				authority:item[2]||'',
+				lastModified:new Date(item[3]||0),
+				lastCheck:new Date(item[4]||0),
 			}
 		});
 		
@@ -49,9 +51,10 @@ function refreshSheetInfos(callback) {
 function refreshRecords(callback) {
 	callback = callback||(()=>{});
 
-	let uri = `${apiUri}/${ssId}/values:batchGet?key=${apiKey}` + sheetInfos.reduce((result, item)=>{
-		return result + `&ranges='${item.name}'!A2:E`;
-	}, '');
+	let uri = `${apiUri}/${ssId}/values:batchGet?key=${apiKey}`;
+	for(let k in sheetInfos) {
+		uri += `&ranges='${k}'!A2:E`
+	}
 	
 	let xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
@@ -69,12 +72,13 @@ function refreshRecords(callback) {
 		cpRecords = {};
 		
 		result.valueRanges.forEach((valueRange)=>{
-			let 資料集 = regex.exec(valueRange.range)[1];
+			let name = regex.exec(valueRange.range)[1];
 
 			valueRange.values.forEach((item)=>{
 				cpRecords[item[0]] = cpRecords[item[0]] || [];
 				cpRecords[item[0]].push({
-					資料集:資料集,
+					資料集:name,
+					主管:sheetInfos[name].authority,
 					條款:item[1],
 					內容:item[2],
 					文號:item[3],

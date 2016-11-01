@@ -82,7 +82,7 @@ function putDetailNode(cpRecord) {
 			listNode.appendChild(Dom.createElement('dd', {}, [
 				Dom.createElement('span', {'class':'條款'}, item.條款),
 				Dom.createElement('span', {'class':'內容'}, item.內容),
-				Dom.createElement('span', {'class':'資料集'}, item.資料集),
+				Dom.createElement('span', {'class':'主管'}, item.主管),
 				Dom.createElement('span', {'class':'文號'}, item.文號),
 				Dom.createElement('span', {'class':'日期'}, item.日期),
 			]));

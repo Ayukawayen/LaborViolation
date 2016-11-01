@@ -1,6 +1,6 @@
 'use strict';
 
-const apiKey = 'YOUR_API_KEY';
+const apiKey = configs.apiKey;
 
 const apiUri = 'https://sheets.googleapis.com/v4/spreadsheets';
 const ssId = '1uLR9eFePzLzlnkO1k1yh2-2_TJCOYGGEatGCQOgpz9M';

@@ -53,7 +53,7 @@ function refreshRecords(callback) {
 
 	let uri = `${apiUri}/${ssId}/values:batchGet?key=${apiKey}`;
 	for(let k in sheetInfos) {
-		uri += `&ranges='${k}'!A2:E`
+		uri += `&ranges='${k}'!A1:E`
 	}
 	
 	let xhr = new XMLHttpRequest();

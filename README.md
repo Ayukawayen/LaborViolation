@@ -29,17 +29,6 @@
 雖然處理xls(x)和pdf檔有困難，但至少可以處理HTML格式。
 當然解析品質沒有人工處理的好，不過聊勝於無。
 
-目前程式自動擷取解析的網頁如下：
-[臺北市](http://bola.gov.taipei/ct.asp?xItem=94627869&ctNode=76327&mp=116003)、
-[桃園市](http://lhrb.tycg.gov.tw/home.jsp?id=373&mcustomize=onemessages_view.jsp&dataserno=201509090001)、
-[臺中市](http://www.labor.taichung.gov.tw/ct.asp?xItem=55333&ctNode=23053&mp=117010)、
-[臺南市](http://www.tainan.gov.tw/labor/page.asp?nsub=M2A400)、
-[高雄市](http://labor.kcg.gov.tw/IllegalList.aspx?appname=IllegalList)、
-[彰化縣](http://labor.chcg.gov.tw/07other/other01_con.asp?topsn=3197&data_id=14138)、
-[宜蘭縣](http://labor.e-land.gov.tw/cp.aspx?n=A727524B27DA3181)、
-[澎湖縣](http://www.penghu.gov.tw/society/home.jsp?contlink=content/20130222113242.jsp)、
-[中科園區](http://www.ctsp.gov.tw/chinese/01news/10statistics_view.aspx?v=1&fr=529&sn=1198)。
-
 解析後的資料儲存於Google試算表。
 
 ----------------------------------------------

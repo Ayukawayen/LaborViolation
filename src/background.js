@@ -18,7 +18,7 @@ setInterval(()=>{
 function refreshSheetInfos(callback) {
 	callback = callback||(()=>{});
 	
-	let range = "'索引'!A2:E";
+	let range = "'索引'!A2:D";
 	
 	let uri = `${apiUri}/${ssId}/values/${range}?key=${apiKey}`;
 	
@@ -36,9 +36,8 @@ function refreshSheetInfos(callback) {
 		result.values.forEach((item) => {
 			sheetInfos[item[0]] = {
 				desc:item[1]||'',
-				authority:item[2]||'',
-				lastModified:new Date(item[3]||0),
-				lastCheck:new Date(item[4]||0),
+				lastModified:new Date(item[2]||0),
+				lastCheck:new Date(item[3]||0),
 			}
 		});
 		
@@ -78,7 +77,6 @@ function refreshRecords(callback) {
 				cpRecords[item[0]] = cpRecords[item[0]] || [];
 				cpRecords[item[0]].push({
 					資料集:name,
-					主管:sheetInfos[name].authority,
 					條款:item[1],
 					內容:item[2],
 					文號:item[3],

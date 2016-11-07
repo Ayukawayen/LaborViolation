@@ -60,13 +60,19 @@
 	line-height:1.25 !important;
 }
 #netAyukawayenLabor dl dd span {
-	margin:0 0.25em 0 0 !important;
+	margin:0 !important;
 }
 #netAyukawayenLabor dl dd .條款:after {
-	content:"：" !important;
+	content:"： " !important;
 }
 #netAyukawayenLabor dl dd .主管:before {
-	content:"(" !important;
+	content:" (" !important;
+}
+#netAyukawayenLabor dl dd .主管:after {
+	content:"　" !important;
+}
+#netAyukawayenLabor dl dd .文號:after {
+	content:"　" !important;
 }
 #netAyukawayenLabor dl dd .日期:after {
 	content:")" !important;

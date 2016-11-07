@@ -33,6 +33,18 @@
 
 ----------------------------------------------
 
+## 程式設定
+
+**config.js**
+```javascript
+const configs = {
+	apiKey: 'YOUR_API_KEY',
+};
+```
+  + **apiKey**: 你的Google API Key。
+
+----------------------------------------------
+
 ## Google試算表
 
 + **試算表連結**: <https://docs.google.com/spreadsheets/d/1uLR9eFePzLzlnkO1k1yh2-2_TJCOYGGEatGCQOgpz9M>

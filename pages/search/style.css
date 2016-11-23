@@ -1,0 +1,31 @@
+html, body {
+	background-color:#ddd;
+	color:#000;
+}
+
+#status.loading {
+	background-color:rgba(0,0,0,0.25);
+
+	animation-name: status_loading;
+	animation-duration: 1.5s;
+	animation-iteration-count: infinite;
+}
+@keyframes status_loading {
+	  0% {color: #000; }
+	 50% {color: #666; }
+	100% {color: #000; }
+}
+#status.error {
+	color:#f00;
+}
+
+#searchBar {
+	background-color:#fff;
+}
+#searchBar .clear {
+	color:#333;
+}
+
+#searchResult >header {
+	background-color:#eee;
+}

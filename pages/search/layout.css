@@ -209,7 +209,7 @@ html, body {
 }
 @media 
 	screen and (max-width: 500px) and (max-height: 500px),
-	screen and (min-width: 501px) and (max-height: 300px)
+	screen and (min-width: 501px) and (max-height: 210px)
 {
 	#container {top:0; bottom:0; height:100%; left:0; right:0; width:100%;}
 	#ad        {display:none;}

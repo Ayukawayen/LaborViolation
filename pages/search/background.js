@@ -1,13 +1,38 @@
 'use strict';
 
 const apiUri = 'https://labor-ayukawayen.rhcloud.com/batchGetSheetsValues';
+const storageItemName = 'laborViolationCpRecords';
+const expireTime = 1800000;
 
 var isRefreshed = false;
 var cpRecords = {};
 
 refresh();
 
-function refresh() {
+function loadLocalData() {
+	if(!localStorage) return null;
+	
+	let data = localStorage.getItem(storageItemName);
+	if(!data) return null;
+	
+	data = JSON.parse(data);
+	if(!data) return null;
+	
+	if(Date.now() > data.expireAt) {
+		localStorage.removeItem(storageItemName);
+		return null;
+	}
+	
+	return data.value;
+}
+
+function refresh(cb) {
+	cpRecords = loadLocalData();
+	if(cpRecords) {
+		onCpRecordsRefreshed();
+		return;
+	}
+	
 	let xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if(this.readyState !== 4) {
@@ -44,13 +69,22 @@ function refresh() {
 		for(let cpName in cpRecords) {
 			cpRecords[cpName].sort((a,b) => ((a.日期==b.日期) ? (a.條款>b.條款 ? 1 : -1) : (a.日期>b.日期 ? -1 : 1)));
 		}
-
-		isRefreshed = true;
-		document.querySelector('#status').textContent = '';
-		document.querySelector('#status').className = 'refreshed';
+		
+		onCpRecordsRefreshed();
+		
+		localStorage.setItem(storageItemName, JSON.stringify({
+			value:cpRecords,
+			expireAt:Date.now()+expireTime,
+		}));
 	};
 	xhr.open('get', apiUri);
 	xhr.send('');
+}
+
+function onCpRecordsRefreshed() {
+	isRefreshed = true;
+	document.querySelector('#status').textContent = '';
+	document.querySelector('#status').className = 'refreshed';
 }
 
 function getCompanyRecords(name) {

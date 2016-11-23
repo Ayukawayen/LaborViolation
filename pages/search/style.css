@@ -33,6 +33,6 @@ html, body {
 #ad {
 	background-color:#ff9;
 }
-#ad >ins {
+#ad .adsbygoogle {
 	background-color:transparent;
 }

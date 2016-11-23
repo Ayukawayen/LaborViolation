@@ -29,3 +29,10 @@ html, body {
 #searchResult >header {
 	background-color:#eee;
 }
+
+#ad {
+	background-color:#ff9;
+}
+#ad >ins {
+	background-color:transparent;
+}

@@ -178,3 +178,30 @@ html, body {
 	#searchResult .resultList >li .recordList >li span.文號 {text-align:center;}
 	#searchResult .resultList >li .recordList >li span.日期 {text-align:right;}
 }
+
+
+#container {display:block; position:absolute; top:0;    bottom:50px; left:0; right:0;}
+#ad        {display:block; position:absolute; bottom:0; height:50px; left:0; right:0;}
+#ad >ins   {margin:0 auto;}
+
+@media screen and (orientation: portrait) and (min-width: 468px) {
+	#container {top:0;    bottom:60px;}
+	#ad        {bottom:0; height:60px;}
+}
+@media screen and (orientation: landscape) {
+	#container {left: 0; right:128px; width:auto; top:0; bottom:0; height:100%;}
+	#ad        {right:0; width:128px; left: auto; top:0; bottom:auto; height:100%; min-height:240px;}
+	#ad >ins   {margin:0.25rem auto;}
+}
+@media screen and (orientation: landscape) and (min-height: 520px) {
+	#ad        {min-height:600px;}
+}
+@media screen and (orientation: landscape) and (min-height: 520px) and (min-width: 640px) {
+	#container {right:168px;}
+	#ad        {width:168px;}
+}
+
+#ad {
+	overflow:hidden;
+	text-align:center;
+}

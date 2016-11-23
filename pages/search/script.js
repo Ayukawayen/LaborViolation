@@ -38,7 +38,7 @@ function putSearchResult(cpRecords) {
 	let cntCompany = cpRecords.length;
 	let cntRecord = cpRecords.reduce((result,item)=>(result+item.records.length), 0);
 	
-	document.body.insertBefore(Dom.createElement('div', {'id':'searchResult'}, [
+	document.querySelector('#container').insertBefore(Dom.createElement('div', {'id':'searchResult'}, [
 		Dom.createElement('header', {}, [
 			Dom.createElement('span', {'class':'summary'}, `共 ${cntCompany}家${cntRecord}項 搜尋結果`),
 			Dom.createElement('a', {'class':'close'}, [

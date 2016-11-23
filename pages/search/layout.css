@@ -103,6 +103,8 @@ html, body {
 
 #searchResult .resultList >li >header {
 	font-size:1.25rem;
+	
+	padding:0 0.5rem 0 0;
 	line-height:1.25;
 }
 

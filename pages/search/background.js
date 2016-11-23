@@ -1,6 +1,6 @@
 'use strict';
 
-const apiUri = 'http://labor-ayukawayen.rhcloud.com/batchGetSheetsValues';
+const apiUri = 'https://labor-ayukawayen.rhcloud.com/batchGetSheetsValues';
 
 var isRefreshed = false;
 var cpRecords = {};

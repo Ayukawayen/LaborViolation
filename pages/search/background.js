@@ -7,9 +7,7 @@ const expireTime = 1800000;
 var isRefreshed = false;
 var cpRecords = {};
 
-refresh();
-
-function loadLocalData() {
+function loadLocalData(ignoreExpire) {
 	if(!localStorage) return null;
 	
 	let data = localStorage.getItem(storageItemName);
@@ -18,18 +16,18 @@ function loadLocalData() {
 	data = JSON.parse(data);
 	if(!data) return null;
 	
-	if(Date.now() > data.expireAt) {
-		localStorage.removeItem(storageItemName);
-		return null;
-	}
+	if(!ignoreExpire && Date.now()>data.expireAt) return null;
 	
 	return data.value;
 }
 
 function refresh(cb) {
+	cb = cb||(()=>{});
+	
 	cpRecords = loadLocalData();
 	if(cpRecords) {
-		onCpRecordsRefreshed();
+		isRefreshed = true;
+		cb();
 		return;
 	}
 	
@@ -39,6 +37,13 @@ function refresh(cb) {
 			return;
 		}
 		if(this.status < 200 || this.status >= 400) {
+			cpRecords = loadLocalData(true);
+			if(cpRecords) {
+				isRefreshed = true;
+				cb();
+				return;
+			}
+			
 			document.querySelector('#status').textContent = '發生錯誤，請稍後重試。';
 			document.querySelector('#status').className = 'error';
 			return;
@@ -70,7 +75,8 @@ function refresh(cb) {
 			cpRecords[cpName].sort((a,b) => ((a.日期==b.日期) ? (a.條款>b.條款 ? 1 : -1) : (a.日期>b.日期 ? -1 : 1)));
 		}
 		
-		onCpRecordsRefreshed();
+		isRefreshed = true;
+		cb();
 		
 		localStorage.setItem(storageItemName, JSON.stringify({
 			value:cpRecords,
@@ -79,12 +85,6 @@ function refresh(cb) {
 	};
 	xhr.open('get', apiUri);
 	xhr.send('');
-}
-
-function onCpRecordsRefreshed() {
-	isRefreshed = true;
-	document.querySelector('#status').textContent = '';
-	document.querySelector('#status').className = 'refreshed';
 }
 
 function getCompanyRecords(name) {

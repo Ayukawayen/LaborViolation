@@ -1,14 +1,40 @@
 'use strict';
 
 document.querySelector('#searchBar .query').addEventListener('input', (ev)=>{
-	search(document.querySelector('#searchBar .query').value);
+	putSearchQuery(document.querySelector('#searchBar .query').value);
 });
 document.querySelector('#searchBar .clear').addEventListener('click', (ev)=>{
-	document.querySelector('#searchBar .query').value = '';
-	search('');
+	putSearchQuery('');
 	document.querySelector('#searchBar .query').focus();
 });
-document.querySelector('#searchBar .query').focus();
+
+refresh(onRefreshed);
+
+function onRefreshed() {
+	let q = parseHash()['q'];
+	if(q) {
+		putSearchQuery(q);
+	}
+	document.querySelector('#status').textContent = '';
+	document.querySelector('#status').className = 'refreshed';
+	document.querySelector('#searchBar .query').focus();
+}
+function parseHash() {
+	if(!location.hash) return {};
+	let result = {};
+	location.hash.substr(1).split('&').forEach((item)=>{
+		let buf = item.split('=');
+		if(!buf[0]) return;
+		result[decodeURIComponent(buf[0]||'')] = decodeURIComponent(buf[1]||'');
+	});
+	
+	return result;
+}
+function putSearchQuery(q) {
+	document.querySelector('#searchBar .query').value = q;
+	location.hash = q ? '#q='+encodeURIComponent(q) : '';
+	search(q);
+}
 
 
 function search(name) {

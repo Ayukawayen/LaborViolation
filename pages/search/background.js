@@ -90,9 +90,12 @@ function onCpRecordsRefreshed() {
 function getCompanyRecords(name) {
 	if(!isRefreshed) return null;
 	
+	name = name.toLowerCase().replace(/\s+/g, '');
+	if(name.length <= 0) return [];
+	
 	let result = [];
 	for(let k in cpRecords) {
-		if(!isCompanyNameMatch(k, name)) continue;
+		if(k.toLowerCase().replace(/\s+/g, '').indexOf(name) < 0) continue;
 		
 		result.push({
 			name:k,
@@ -103,17 +106,4 @@ function getCompanyRecords(name) {
 	result.sort((a,b)=>{return a.name>b.name ? 1 : -1});
 
 	return result;
-}
-
-
-function isCompanyNameMatch(a, b) {
-	a = a.toLowerCase().replace(/\s+/g, '');
-	b = b.toLowerCase().replace(/\s+/g, '');
-	
-	if(a.length <= 0 || b.length <= 0) return false;
-	
-	if(a.indexOf(b) >= 0) return true;
-	if(b.indexOf(a) >= 0) return true;
-	
-	return false;
 }

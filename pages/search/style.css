@@ -1,6 +1,11 @@
-html, body {
+html {
+	background-color:#fff;
+}
+body {
 	background-color:#ddd;
 	color:#000;
+	border:#ddd solid;
+	border-width:0 1px;
 }
 
 #status.loading {

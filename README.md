@@ -2,6 +2,8 @@
 
 查詢違反勞動法令之事業單位。在求職網站上顯示公司的違法記錄。
 
+(2017/9/30: 因主機商停止服務，暫停自動更新。)
+
 資料來源：
 [臺北市](http://bola.gov.taipei/ct.asp?xItem=94627869&ctNode=76327&mp=116003)、
 [新北市](https://ilabor.ntpc.gov.tw/cloud/Violate/)、
